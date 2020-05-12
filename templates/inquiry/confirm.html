@@ -1,0 +1,55 @@
+{% extends 'common/frame.html' %}
+{% load static %}
+
+{% block title %}Contact us - {{ block.super }}{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/inquiry.css' %}">
+{% endblock %}
+
+{% block content %}
+<section>
+	<h2 class="mainTitle">
+		Contact me
+	</h2>
+	<form method="post" action="{% url 'inquiry_complete' %}">
+		{% csrf_token %}
+		<input type="hidden" name="submit_token" value="{{ content.submit_token }}">
+		<table class="formTable">
+			<tr class="formTable_row formTable_row-requied">
+				<th>お名前</th>
+				<td><div class="confirm">{{ content.form.cleaned_data.name }}</div></td>
+			</tr>
+			<tr class="formTable_row formTable_row-requied">
+				<th>カテゴリ</th>
+				<td><div class="confirm">{{ content.categoryname }}</div></td>
+			</tr>
+			<tr class="formTable_row formTable_row-requied">
+				<th>お問い合わせ内容</th>
+				<td><div class="confirm">{{ content.form.cleaned_data.body }}</div></td>
+			</tr>
+			<tr class="formTable_row formTable_row-requied">
+				<th>メールアドレス</th>
+				<td><div class="confirm">{{ content.form.cleaned_data.email }}</div></td>
+			</tr>
+			<tr class="formTable_row formTable_row-requied">
+				<th>ご連絡先</th>
+				<td><div class="confirm">{{ content.form.cleaned_data.tel }}</div></td>
+			</tr>
+		</table>
+		<div class="">
+			{% for field in content.form %}
+					{{field.as_hidden}}
+			{% endfor %}
+		</div>
+		<div class="btnArea">
+			<button type="submit" class="btn btn-back" formaction="{% url 'inquiry' %}">戻る</button>
+			<button type="submit" class="btn btn-next">送信</button>
+		</div>
+	</form>
+</section>
+{% endblock %}
+
+{% block js %}
+<!-- <script src="{% static 'js/inquiry.js' %}"></script> -->
+{% endblock %}

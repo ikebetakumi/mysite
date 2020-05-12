@@ -1,0 +1,25 @@
+{% extends 'common/frame.html' %}
+{% load static %}
+
+{% block title %}404 - {{ block.super }}{% endblock %}
+
+{% block css %}
+{% endblock %}
+
+{% block content %}
+<section class="mainBlock">
+	<h2 class="mainTitle">
+		Page Not Found
+	</h2>
+	<div class="">
+		<p>
+			アクセスできないURLかページが存在しません。
+		</p>
+		<br>
+		<a href="{% url 'top' %}" class="">トップページに戻る</a>
+	</div>
+</section>
+{% endblock %}
+
+{% block js %}
+{% endblock %}

@@ -1,0 +1,63 @@
+{% extends 'common/frame.html' %}
+{% load static %}
+
+{% block title %}Contact me - {{ block.super }}{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/inquiry.css' %}">
+{% endblock %}
+
+{% block content %}
+<section class="mainBlock">
+	<h2 class="mainTitle">
+		Contact me
+	</h2>
+	<form method="post" action="{% url 'inquiry_confirm' %}">
+		{% csrf_token %}
+		<table class="formTable">
+			<tr class="formTable_row formTable_row-requied">
+				<th class="formTable_head">お名前</th>
+				<td>
+					{{ content.form.name }}
+					{% if content.form.name.errors %}<div class="formTable_error">{{ content.form.name.errors }}</div>{% endif %}
+				</td>
+			</tr>
+			<tr class="formTable_row">
+				<th>カテゴリ</th>
+				<td>
+					{{ content.form.categoryname }}
+					{% if content.form.categoryname.errors %}<div class="formTable_error">{{ content.form.categoryname.errors }}</div>{% endif %}
+				</td>
+			</tr>
+			<tr class="formTable_row">
+				<th>お問い合わせ内容</th>
+				<td>
+					{{ content.form.body }}
+					{% if content.form.body.errors %}<div class="formTable_error">{{ content.form.body.errors }}</div>{% endif %}
+				</td>
+			</tr>
+			<tr class="formTable_row">
+				<th>メールアドレス</th>
+				<td>
+					{{ content.form.email }}
+					{% if content.form.email.errors %}<div class="formTable_error">{{ content.form.email.errors }}</div>{% endif %}
+				</td>
+			</tr>
+			<tr class="formTable_row">
+				<th>ご連絡先</th>
+				<td>
+					{{ content.form.tel }}
+					{% if content.form.tel.errors %}<div class="formTable_error">{{ content.form.tel.errors }}</div>{% endif %}
+				</td>
+			</tr>
+		</table>
+		<div class="btnArea">
+			<button type="reset" class="btn btn-back">クリア</button>
+			<button type="submit" class="btn btn-next">確認</button>
+		</div>
+	</form>
+</section>
+{% endblock %}
+
+{% block js %}
+{% endblock %}

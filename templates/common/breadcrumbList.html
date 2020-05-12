@@ -1,0 +1,10 @@
+{% load static %}
+<ul class="breadcrumbList">
+	{% for key,item in list.items %}
+		<li class="">
+			<a {% if item.urlname %}href="{% url item.urlname %}" {% endif %}class="fontXS">
+				{{ item.label }}
+			</a>
+		</li>
+	{% endfor %}
+</ul>

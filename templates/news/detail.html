@@ -1,0 +1,33 @@
+{% extends 'common/frame.html' %}
+{% load static %}
+
+{% block title %}News - {{ block.super }}{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/news.css' %}">
+{% endblock %}
+
+{% block content %}
+<section class="mainBlock newsDetail">
+	<h2 class="mainTitle">
+		{{content.detail.title}}
+	</h2>
+	<p class="fontXS">
+		{{content.detail.publish_date}}
+	</p>
+	<div class="newsDetail_body">
+		{{content.detail.body| linebreaksbr }}
+	</div>
+	<div class="newsDetail_link">
+		{% if  content.prev %}
+			<a class="newsDetail_link_prev" href="{% url 'news_detail' content.prev.id %}">{{content.prev.title}}</a>
+		{% endif %}
+		{% if  content.next %}
+			<a class="newsDetail_link_next"  href="{% url 'news_detail' content.next.id %}">{{content.next.title}}</a>
+		{% endif %}
+	</div>
+</section>
+{% endblock %}
+
+{% block js %}
+{% endblock %}

@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>{% block title %}beeのサイト{% endblock %}</title>
+	{% spaceless %}
+		{% include 'common/css.html' %}
+		{% block css %}
+		{% endblock %}
+	{% endspaceless %}
+</head>
+<body>
+	<div class="prefilter"></div>
+	<div class="content">
+		<!-- header -->
+		{% include 'common/header.html' %}
+		<!-- main content -->
+		<div class="mainContent {{common.season}}">
+		{% spaceless %}
+			{% include 'common/breadcrumbList.html' with list=content.breadcrumbList  only %}
+			{% block content %}
+			{% endblock %}
+		{% endspaceless %}
+		</div>
+		<!-- footer -->
+		{% include 'common/footer.html' %}
+	</div>
+	<div class="source">
+		{% spaceless %}
+			{% include 'common/js.html' %}
+			{% block js %}
+			{% endblock %}
+		{% endspaceless %}
+	</div>
+</body>
+</html>

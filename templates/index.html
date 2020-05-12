@@ -1,0 +1,70 @@
+{% extends 'common/frame.html' %}
+{% load static %}
+
+{% block title %}{{ block.super }}{% endblock %}
+
+{% block css %}
+{% endblock %}
+
+{% block content %}
+<section class="mainBlock">
+	<h2 class="mainTitle">
+		はじめに
+	</h2>
+	<p class="">
+		{{ common.greeting }}！ベーです。
+	</p>
+</section>
+
+<section class="mainBlock">
+	<h2 class="mainTitle">
+		News
+	</h2>
+	<div class="">
+		<ul class="">
+			{% for items in content.news %}
+				<li class="">
+					{{items.publish_date}} : {{items.title}}
+				</li>
+			{% endfor %}
+		</ul>
+		<a href="{% url 'news' %}" class="">
+			Read more...
+		</a>
+	</div>
+</section>
+
+<section class="mainBlock">
+	<h2 class="mainTitle">
+		Profile
+	</h2>
+	<div class="">
+		<ul class="">
+			<li class="">
+				名前 ベー
+			</li>
+			<li class="">
+				年齢 {{common.age}}歳
+			</li>
+			<li class="">
+				職業 ニート
+			</li>
+			<li class="">
+				言語 PHP,Python,JavaScript,HTML,CSS
+			</li>
+		</ul>
+	</div>
+</section>
+
+<section class="mainBlock">
+	<h2 class="mainTitle">
+		Contact me
+	</h2>
+	<div class="">
+		お問い合わせは<a href="{% url 'inquiry' %}" class="">こちら</a>
+	</div>
+</section>
+{% endblock %}
+
+{% block js %}
+{% endblock %}

@@ -1,0 +1,21 @@
+{% spaceless %}
+<div class="header">
+	<div class="header_inner">
+		<div class="header_title fontL">beeのサイト</div>
+		<a class="header_menutrigger">
+			<span class="header_menutrigger_bar"></span>
+			<span class="header_menutrigger_bar"></span>
+			<span class="header_menutrigger_bar"></span>
+		</a>
+		<div class="header_menu">
+			<ul class="">
+				{% for key,item in header.menu.items %}
+					<li class="">
+						<a {% if item.active == False %} href="{% url item.urlname %}" {% endif %}class="fontM">{{ item.label }}</a>
+					</li>
+				{% endfor %}
+			</ul>
+		</div>
+	</div>
+</div>
+{% endspaceless %}

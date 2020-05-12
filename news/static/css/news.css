@@ -1,0 +1,27 @@
+/* newsDetail */
+.newsDetail_body {
+	border: solid 1px;
+	border-color: var(--bg-color-main);
+	padding: 1em 2em;
+	margin-top: .5em;
+	line-height: 2em;
+}
+
+.newsDetail_link {
+	margin-top: 1em;
+	position: relative;
+	height: 3em;
+}
+
+.newsDetail_link_prev,.newsDetail_link_next {
+	display: inline-block;
+}
+
+.newsDetail_link_prev {
+	position: absolute;
+	left: 0;
+}
+.newsDetail_link_next {
+	position: absolute;
+	right: 0;
+}

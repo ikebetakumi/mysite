@@ -1,0 +1,28 @@
+{% extends 'common/frame.html' %}
+{% load static %}
+
+{% block title %}News - {{ block.super }}{% endblock %}
+
+{% block css %}
+<!-- <link rel="stylesheet" href="{% static 'css/news.css' %}"> -->
+{% endblock %}
+
+{% block content %}
+<section class="mainBlock">
+	<h2 class="mainTitle">
+		News
+	</h2>
+	<div class="">
+		<ul class="">
+			{% for items in content.news %}
+				<li class="">
+					<span class="fontSS">{{items.publish_date}}</span> : <a href="{% url 'news_detail' items.id %}">{{items.title}}</a>
+				</li>
+			{% endfor %}
+		</ul>
+	</div>
+</section>
+{% endblock %}
+
+{% block js %}
+{% endblock %}

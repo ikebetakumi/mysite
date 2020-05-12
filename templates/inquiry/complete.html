@@ -1,0 +1,25 @@
+{% extends 'common/frame.html' %}
+{% load static %}
+
+{% block title %}Contact us - {{ block.super }}{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/inquiry.css' %}">
+{% endblock %}
+
+{% block content %}
+<section>
+	<h2 class="mainTitle">
+		Contact me
+	</h2>
+	<div class="">
+		お問い合わせありがとうございました。
+	</div>
+	<div class="btnArea">
+		<a href="{% url 'top' %}" class="btn">トップへ</a>
+	</div>
+</section>
+{% endblock %}
+
+{% block js %}
+{% endblock %}

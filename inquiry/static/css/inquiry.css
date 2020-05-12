@@ -1,0 +1,133 @@
+/* formTable */
+.formTable {
+	border-collapse: collapse;
+	box-sizing: border-box;
+	width: 100%;
+	max-width: 1400px;
+}
+.formTable_row {
+	border-top: solid 1px gray;
+	border-bottom: solid 1px gray;
+}
+.sp .formTable_row {
+	display: block;
+	margin: 0 10px;
+	border-top: none;
+}
+.formTable_row th {
+	background: var(--bg-color-sub);
+	font-size: var(--font-size-s);
+	font-weight: normal;
+	padding: 8px 4px 8px 30px;
+	text-align: left;
+	vertical-align: middle;
+	width: 30%;
+}
+.formTable_row-required th:before,.formTable_row-required th:after {
+	content: '必須';
+	display: inline-block;
+	background: var(--bg-color-red);
+	border: solid 1px;
+	font-size: var(--font-size-xs);;
+	padding: 0 8px;
+	margin-right: 1em;
+}
+.formTable_row-required th:after {
+	display: none;
+}
+.sp .formTable_row th {
+	background-color: var(--bg-color-white);
+	display: block;
+	padding: 20px 0 0;
+	width: 100%;
+}
+.sp .formTable_row th:before {
+	display: none;
+}
+.sp .formTable_row-required th:after {
+	display: inline-block;
+	margin-left: 1em;
+}
+.formTable_row td {
+	font-size: var(--font-size-s);
+	padding: 14px 2em 14px 2em;
+	width: 70%;
+}
+.sp .formTable_row td {
+	display: block;
+	width: 100%;
+	padding-left: 0;
+	padding-right: 0;
+	padding-bottom: 20px;
+}
+.formTable_row input[type="text"],.formTable_row textarea {
+	border: solid 1px var(--bg-color-main);
+	box-sizing: border-box;
+	font-size: var(--font-size-ss);
+	padding: 4px 6px;
+	vertical-align: middle;
+	width: 100%;
+}
+.formTable_row textarea {
+	height: 200px;
+	max-height: 500px;
+	resize: vertical;
+}
+.formTable_row select {
+	background: var(--bg-color-white);
+	border: solid 1px var(--bg-color-main);
+	border-radius: 0;
+	font-size: var(--font-size-ss);
+	min-width: 40%;
+	padding: 2px;
+}
+
+.formTable_error{
+	color: var(--font-color-red);
+	font-size: var(--font-size-ss);
+	margin-top: 0.5em;
+}
+
+@media (max-width:700px) {
+	.formTable_row th {
+		font-size: var(--font-size-ss);
+	}
+}
+
+@media (max-width:600px) {
+	.formTable_row {
+		display: block;
+		margin: 0 10px;
+	}
+	.formTable_row:nth-child(n+2) {
+		border-top: none;
+	}
+	.formTable_row th {
+		background-color: var(--bg-color-white);
+		display: block;
+		font-size: var(--font-size-ss);
+		padding: 20px 0 0;
+		width: 100%;
+	}
+	.formTable_row th:before {
+		display: none;
+	}
+	.formTable_row-required th:after {
+		display: inline-block;
+		margin-left: 1em;
+	}
+	.formTable_row td {
+		display: block;
+		width: 100%;
+		padding-left: 0;
+		padding-right: 0;
+		padding-bottom: 20px;
+	}
+}
+
+
+/* button */
+.btnArea {
+	margin: 40px 0;
+	text-align: center;
+}
