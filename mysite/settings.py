@@ -11,10 +11,16 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 
 import os
-import environ
+import configparser
 
-env = environ.Env(DEBUG=(bool, False),)
-environ.Env.read_env('.env')
+
+# 設定ファイルを読み込む
+env = configparser.ConfigParser()
+env.read('env.conf')
+
+
+# env = environ.Env(DEBUG=(bool, False),)
+# environ.Env.read_env('.env')
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -27,9 +33,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'j89c9cyjiw6h0gtp_0&-w+m8aau!#z7#_k+8d^surl_y*m+&s^'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = env('DEBUG')
+DEBUG = env.getboolean('DEFAULT', 'DEBUG')
 
-ALLOWED_HOSTS = env('ALLOWED_HOSTS')
+ALLOWED_HOSTS = [env.get('DEFAULT', 'ALLOWED_HOST')]
 
 
 # Application definition
@@ -85,11 +91,12 @@ DATABASES = {
     'default': {
         # 'ENGINE': 'django.db.backends.sqlite3',
         # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-				'ENGINE': env('DATABASE_ENGINE'),
-        'NAME': env('DATABASE_NAME'), #　作成したデータベース名
-        'USER': env('DATABASE_USER'), # ログインユーザー名
-        'HOST': env('DATABASE_HOST'),
-        'PORT': env('DATABASE_PORT'),
+				'ENGINE': env.get('DATABASE', 'ENGINE'),
+        'NAME': env.get('DATABASE', 'NAME'), #　作成したデータベース名
+        'USER': env.get('DATABASE', 'USER'), # ログインユーザー名
+        'HOST': env.get('DATABASE', 'HOST'),
+        'PORT': env.get('DATABASE', 'PORT'),
+				'PASSWORD': env.get('DATABASE', 'PASS'),
     }
 }
 
