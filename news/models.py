@@ -5,9 +5,7 @@ import datetime
 
 class News(models.Model):
     title = models.CharField('タイトル', max_length=100)
-    # thumbnail = models.ImageField('サムネイル')
     body = models.TextField('本文')
-    # del_flg = models.BooleanField('削除フラグ', default=False)
     start_date = models.DateTimeField('公開日時')
     end_date   = models.DateTimeField('公開終了日時')
     created_at = models.DateTimeField(auto_now_add=True)

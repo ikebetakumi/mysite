@@ -11,7 +11,7 @@ class Category(models.Model):
         return self.name
     class Meta:
         verbose_name_plural = 'catgories' # 小文字でよい
-				# verbose_name = 'ブログ'
+        # verbose_name = 'ブログ'
 
 class Inquiry(models.Model):
     name = models.CharField('名前',max_length=100)
