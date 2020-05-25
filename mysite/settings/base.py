@@ -11,31 +11,14 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 
 import os
-import configparser
 
-
-# 設定ファイルを読み込む
-env = configparser.ConfigParser()
-env.read('env.conf')
-
-
-# env = environ.Env(DEBUG=(bool, False),)
-# environ.Env.read_env('.env')
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
+# BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'j89c9cyjiw6h0gtp_0&-w+m8aau!#z7#_k+8d^surl_y*m+&s^'
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = env.getboolean('DEFAULT', 'DEBUG')
-
-ALLOWED_HOSTS = [env.get('DEFAULT', 'ALLOWED_HOST')]
 
 
 # Application definition
@@ -84,21 +67,6 @@ TEMPLATES = [
 WSGI_APPLICATION = 'mysite.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/2.0/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        # 'ENGINE': 'django.db.backends.sqlite3',
-        # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-				'ENGINE': env.get('DATABASE', 'ENGINE'),
-        'NAME': env.get('DATABASE', 'NAME'), #　作成したデータベース名
-        'USER': env.get('DATABASE', 'USER'), # ログインユーザー名
-        'HOST': env.get('DATABASE', 'HOST'),
-        'PORT': env.get('DATABASE', 'PORT'),
-				'PASSWORD': env.get('DATABASE', 'PASS'),
-    }
-}
 
 
 # Password validation
@@ -138,6 +106,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+print(BASE_DIR)
+print(STATIC_ROOT)
 # STATICFILES_DIRS = [
 #     os.path.join(BASE_DIR + '/mysite', 'static'),
 # 		os.path.join(BASE_DIR + '/inquiry', 'static'),

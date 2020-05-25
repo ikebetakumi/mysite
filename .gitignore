@@ -121,5 +121,5 @@ dmypy.json
 # End of https://www.gitignore.io/api/django
 
 
-#env
-env.conf
+#dev
+development.py
